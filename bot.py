@@ -1,4 +1,3 @@
-
 import telebot
 import os
 
@@ -7,7 +6,7 @@ bot = telebot.TeleBot(API_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "مرحبًا بك في غرفة المراقبة.
+    bot.reply_to(message, """مرحبًا بك في غرفة المراقبة.
 
 أنا Dr. Kepler… لست معالجك، ولا صديقك، بل الصوت الذي يدرّب وعيك على أن يرى ما لا يُقال.
 
@@ -19,8 +18,7 @@ def send_welcome(message):
 مستعد تشوف اللي كان دايم قدامك؟
 
 ابدأ الآن.
-
-@KeplerHimself")
+""")
 
 @bot.message_handler(commands=['consult'])
 def send_consult(message):
@@ -28,9 +26,6 @@ def send_consult(message):
 
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
-    if "استشارة" in message.text or "تحليل" in message.text:
-        bot.reply_to(message, "تقدر تطلب استشارة مباشرة من: @KeplerHimself")
-    else:
-        bot.reply_to(message, "اكتب /start لبدء التحليل، أو /consult للتواصل.")
+    bot.reply_to(message, "اكتب /start لبدء التحليل، أو /consult للاستشارة.")
 
 bot.infinity_polling()
